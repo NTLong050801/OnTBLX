@@ -1,28 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintBottom_toBottomOf="parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:rowCount="4"
+    android:columnCount="2"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="Học lý thuyết"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="44dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton7"
+        android:layout_width="195dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        app:srcCompat="@drawable/biencam" />
+
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton8"
+        android:layout_width="195dp"
+        android:layout_row="3"
+        android:layout_column="1"
+        app:srcCompat="@drawable/biencam" />
+
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton"
+        android:layout_width="195dp"
+        android:layout_row="0"
+        android:layout_column="1"
+        app:srcCompat="@drawable/biencam" />
+
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton3"
+        android:layout_width="195dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        app:srcCompat="@drawable/biencam" />
+
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton6"
+        android:layout_width="195dp"
+        android:layout_row="2"
+        android:layout_column="1"
+        app:srcCompat="@drawable/biencam" />
+
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton5"
+        android:layout_width="195dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        app:srcCompat="@drawable/biencam" />
+
+    <ImageButton
+
+        android:id="@+id/imageButton4"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:background="#FF5722"
+        android:scaleType="fitCenter"
+        android:tint="#fff"
+        app:srcCompat="@drawable/ic_infinity" />
+
+    <ImageButton
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/imageButton2"
+        android:layout_width="195dp"
+        android:layout_row="1"
+        android:layout_column="1"
+        app:srcCompat="@drawable/biencam" />
+</GridLayout>
