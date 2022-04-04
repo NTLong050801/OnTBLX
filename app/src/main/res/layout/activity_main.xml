@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:rowCount="4"
     android:columnCount="2"
+
     android:layout_marginTop="16dp"
     android:layout_marginBottom="16dp"
     android:layout_marginLeft="16dp"
@@ -19,7 +20,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/layout11"
-        android:layout_width="205dp"
+        android:layout_width="160dp"
         android:layout_height="205dp"
         android:layout_row="0"
         android:layout_column="0"
@@ -29,12 +30,13 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_marginLeft="67dp"
+
             android:layout_marginTop="15dp"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_row="0"
             android:layout_column="0"
+            android:layout_gravity="center"
             android:src="@drawable/ic_infinity"
             app:tint="#Fff">
 
@@ -55,7 +57,7 @@
     <LinearLayout
 
         android:id="@+id/layout2"
-        android:layout_width="205dp"
+        android:layout_width="160dp"
         android:layout_height="205dp"
         android:layout_row="0"
         android:layout_column="1"
@@ -207,7 +209,7 @@
             android:layout_column="0"
             android:layout_marginLeft="67dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_cau_diem_liet"
+            android:src="@drawable/ic_checked"
             app:tint="#Fff">
 
         </ImageView>
