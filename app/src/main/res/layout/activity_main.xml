@@ -15,79 +15,211 @@
     android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp">
 
-
-    <ImageButton
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:id="@+id/imageButton7"
-        android:layout_width="195dp"
-        android:layout_row="3"
-        android:layout_column="0"
-        app:srcCompat="@drawable/biencam" />
-
-    <ImageButton
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:id="@+id/imageButton8"
-        android:layout_width="195dp"
-        android:layout_row="3"
-        android:layout_column="1"
-        app:srcCompat="@drawable/biencam" />
-
-    <ImageButton
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:id="@+id/imageButton"
-        android:layout_width="195dp"
-        android:layout_row="0"
-        android:layout_column="1"
-        app:srcCompat="@drawable/biencam" />
-
-    <ImageButton
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:id="@+id/imageButton3"
-        android:layout_width="195dp"
-        android:layout_row="2"
-        android:layout_column="0"
-        app:srcCompat="@drawable/biencam" />
-
-    <ImageButton
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:id="@+id/imageButton6"
-        android:layout_width="195dp"
-        android:layout_row="2"
-        android:layout_column="1"
-        app:srcCompat="@drawable/biencam" />
-
-    <ImageButton
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:id="@+id/imageButton5"
-        android:layout_width="195dp"
-        android:layout_row="1"
-        android:layout_column="0"
-        app:srcCompat="@drawable/biencam" />
-
-    <ImageButton
-
-        android:id="@+id/imageButton4"
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/layout11"
         android:layout_width="205dp"
-        android:layout_height="201dp"
+        android:layout_height="205dp"
         android:layout_row="0"
         android:layout_column="0"
-        android:background="#FF5722"
+        android:background="#FFC107"
         android:scaleType="fitCenter"
         android:tint="#fff"
-        app:srcCompat="@drawable/ic_infinity" />
+        android:orientation="vertical" >
 
-    <ImageButton
-        android:background="@null"
+        <ImageView
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:src="@drawable/ic_infinity"
+            app:tint="#Fff">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Đề ngẫu nhiên"
+            android:textSize="22dp"
+            android:textColor="#fff"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            ></TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:id="@+id/layout2"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:background="#1FDC26"
+        android:orientation="vertical"
         android:scaleType="fitCenter"
-        android:id="@+id/imageButton2"
-        android:layout_width="195dp"
+        android:tint="#fff">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_checked"
+            app:tint="#Fff">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Thi theo bộ đề"
+            android:textColor="#fff"
+            android:textSize="22dp"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#F30505"
+        android:orientation="vertical"
+        android:scaleType="fitCenter"
+        android:tint="#fff">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_failed"
+            app:tint="#Fff">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Xem câu bị sai"
+            android:textColor="#fff"
+            android:textSize="22dp"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout4"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
         android:layout_row="1"
         android:layout_column="1"
-        app:srcCompat="@drawable/biencam" />
+        android:background="#03A9F4"
+        android:orientation="vertical"
+        android:scaleType="fitCenter"
+        android:tint="#fff">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_ontapcauhoi"
+            app:tint="#Fff">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Ôn tập câu hỏi"
+            android:textColor="#fff"
+            android:textSize="22dp"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout5"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#009688"
+        android:orientation="vertical"
+        android:scaleType="fitCenter"
+        android:tint="#fff">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_dengiaothong"
+            app:tint="#Fff">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Biển báo giao thông"
+            android:textColor="#fff"
+            android:textSize="22dp"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout6"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:background="#FF8C00"
+        android:orientation="vertical"
+        android:scaleType="fitCenter"
+        android:tint="#fff">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_cau_diem_liet"
+            app:tint="#Fff">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="10 câu điểm liệt"
+            android:textColor="#fff"
+            android:textSize="22dp"></TextView>
+    </LinearLayout>
+
 </GridLayout>
