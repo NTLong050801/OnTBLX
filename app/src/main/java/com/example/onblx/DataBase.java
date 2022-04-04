@@ -11,8 +11,8 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String DB_OnThiBLX = "db_blx";
     public static final int DB_VERSION = 1;
 
-    public DataBase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DataBase(@Nullable Context context) {
+        super(context, DB_OnThiBLX, null, DB_VERSION);
     }
     //truy vấn không trả về kết quả
     public void QueryData(String sql){
