@@ -79,7 +79,7 @@
         android:layout_column="0"
         android:background="#FF5722"
         android:scaleType="fitCenter"
-        android:tint="#fff"
+
         app:srcCompat="@drawable/ic_infinity" />
 
     <ImageButton
