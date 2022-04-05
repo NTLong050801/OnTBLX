@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnBLX">
-
+        <activity
+            android:name=".bienBao"
+            android:exported="false" />
         <activity
             android:name=".listCauHoi"
             android:exported="false" />

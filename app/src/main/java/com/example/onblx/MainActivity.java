@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout deNgauNhien;
+    LinearLayout deNgauNhien, bienBaoGiaoThong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +25,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        bienBaoGiaoThong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, bienBao.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void AnhXa(){
         deNgauNhien = (LinearLayout) findViewById(R.id.deNgauNhien);
+        bienBaoGiaoThong = (LinearLayout) findViewById(R.id.bienBaoGiaoThong);
     }
 }
