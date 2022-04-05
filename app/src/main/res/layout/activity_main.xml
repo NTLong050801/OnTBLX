@@ -18,7 +18,7 @@
     <LinearLayout
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:id="@+id/layout11"
+        android:id="@+id/deNgauNhien"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_row="0"
@@ -55,7 +55,7 @@
 
     <LinearLayout
 
-        android:id="@+id/layout2"
+        android:id="@+id/thiTheoBoDe"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_row="0"
@@ -88,7 +88,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout3"
+        android:id="@+id/xemCauBiSai"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_row="1"
@@ -123,7 +123,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout4"
+        android:id="@+id/onTapCauHoi"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_row="1"
@@ -156,7 +156,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout5"
+        android:id="@+id/bienBaoGiaoThong"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_row="2"
@@ -191,7 +191,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout6"
+        android:id="@+id/cauBiLiet"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_row="2"

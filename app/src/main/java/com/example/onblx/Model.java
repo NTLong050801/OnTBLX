@@ -28,7 +28,7 @@ public class Model {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM CauHoi", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            CauHoi cauhoi = new CauHoi(cursor.getString(0), cursor.getString(1), cursor.getBlob(2));
+            CauHoi cauhoi = new CauHoi(cursor.getString(1), cursor.getString(2), cursor.getBlob(5));
             listCauHoi.add(cauhoi);
             cursor.moveToNext();
         }

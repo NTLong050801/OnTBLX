@@ -25,6 +25,7 @@
         android:layout_gravity="center"
         android:layout_margin="30dp"
         android:src="@drawable/biencam"
+        android:id="@+id/hinh_anh"
         ></ImageView>
 
       <RadioButton
@@ -34,7 +35,7 @@
           android:textColor="#000"
           android:textSize="22dp"
           android:background="@drawable/linetexts"
-          android:id="@+id/cbDapAnA"
+          android:id="@+id/rbDapAnA"
           android:paddingTop="10dp"
           android:paddingBottom="10dp"
           android:layout_marginLeft="30dp"
@@ -49,7 +50,7 @@
         android:textColor="#000"
         android:textSize="22dp"
         android:background="@drawable/linetexts"
-        android:id="@+id/cbDapAnB"
+        android:id="@+id/rbDapAnB"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginLeft="30dp"
@@ -64,7 +65,7 @@
         android:textColor="#000"
         android:textSize="22dp"
         android:background="@drawable/linetexts"
-        android:id="@+id/cbDapAnC"
+        android:id="@+id/rbDapAnC"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginLeft="30dp"
@@ -79,7 +80,7 @@
         android:textColor="#000"
         android:textSize="22dp"
         android:background="@drawable/linetexts"
-        android:id="@+id/cbDapAnD"
+        android:id="@+id/rbDapAnD"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginLeft="30dp"
