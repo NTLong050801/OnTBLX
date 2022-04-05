@@ -2,16 +2,14 @@ package com.example.onblx;
 
 public class CauHoi {
    private String tencauhoi;
-   private String dapan;
-   private byte[] bienbao;
+   private byte[] hinhanh;
 
     public CauHoi() {
     }
 
-    public CauHoi(String tencauhoi, String dapan, byte[] bienbao) {
+    public CauHoi(String tencauhoi, byte[] hinhanh) {
         this.tencauhoi = tencauhoi;
-        this.dapan = dapan;
-        this.bienbao = bienbao;
+        this.hinhanh = hinhanh;
     }
 
     public String getTencauhoi() {
@@ -22,19 +20,11 @@ public class CauHoi {
         this.tencauhoi = tencauhoi;
     }
 
-    public String getDapan() {
-        return dapan;
+    public byte[] getHinhanh() {
+        return hinhanh;
     }
 
-    public void setDapan(String dapan) {
-        this.dapan = dapan;
-    }
-
-    public byte[] getBienbao() {
-        return bienbao;
-    }
-
-    public void setBienbao(byte[] bienbao) {
-        this.bienbao = bienbao;
+    public void setHinhanh(byte[] hinhanh) {
+        this.hinhanh = hinhanh;
     }
 }
