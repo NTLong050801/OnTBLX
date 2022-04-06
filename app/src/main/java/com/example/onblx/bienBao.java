@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.onblx.Adapter.BienBaooAdapter;
 
@@ -24,16 +25,16 @@ public class bienBao extends AppCompatActivity {
 
         Model model = new Model(this);
 
-//        for(int i = 0 ; i<= model.getBienBao().size(); i++){
-//            BienBaoModels dsbienbao = model.getBienBao().get(i);
-//            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), null));
-//
-//        }
-        BienBaoModels dsbienbao = model.getBienBao().get(0);
+        for(int i = 0 ; i<= 2; i++){
+            BienBaoModels dsbienbao = model.getBienBao().get(i);
+            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), null));
+
+        }
+//        BienBaoModels dsbienbao = model.getBienBao().get(0);
 //        Bitmap bitmap = BitmapFactory.decodeByteArray(dsbienbao.getImgBienBao(), 0, dsbienbao.getImgBienBao().length);
-       mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), null));
-        mangbienbao.add(new BienBaoModels("99", "bIỂN BÁO GÌ ĐÓ", "ý NGHĨA BIỂN BÁO", null));
-        mangbienbao.add(new BienBaoModels("98", "BIỂN BÁO GÌ ĐÓ", "ý NGHĨA BIỂN BÁO", null));
+//       mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), null));
+//        mangbienbao.add(new BienBaoModels("99", "bIỂN BÁO GÌ ĐÓ", "ý NGHĨA BIỂN BÁO", null));
+//        mangbienbao.add(new BienBaoModels("98", "BIỂN BÁO GÌ ĐÓ", "ý NGHĨA BIỂN BÁO", null));
 
         BienBaooAdapter bbAdapter = new BienBaooAdapter(
                 bienBao.this,
