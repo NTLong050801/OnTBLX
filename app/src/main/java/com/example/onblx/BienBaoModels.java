@@ -1,25 +1,19 @@
 package com.example.onblx;
 
-public class BienBaoModels {
-    private byte[] imgBienbao;
-    private String maBienBao, tenBienBao, yNghiaBienBao;
+import android.widget.ImageView;
 
+public class BienBaoModels {
+//    private byte[] imgBienbao;
+    public String maBienBao, tenBienBao, yNghiaBienBao;
+    public ImageView imgBienBao;
     public BienBaoModels() {
     }
 
-    public BienBaoModels(byte[] imgBienbao, String maBienBao, String tenBienBao, String yNghiaBienBao) {
-        this.imgBienbao = imgBienbao;
+    public BienBaoModels(String maBienBao, String tenBienBao, String yNghiaBienBao, ImageView imgBienBao) {
         this.maBienBao = maBienBao;
         this.tenBienBao = tenBienBao;
         this.yNghiaBienBao = yNghiaBienBao;
-    }
-
-    public byte[] getImgBienbao() {
-        return imgBienbao;
-    }
-
-    public void setImgBienbao(byte[] imgBienbao) {
-        this.imgBienbao = imgBienbao;
+        this.imgBienBao = imgBienBao;
     }
 
     public String getMaBienBao() {
@@ -44,5 +38,13 @@ public class BienBaoModels {
 
     public void setyNghiaBienBao(String yNghiaBienBao) {
         this.yNghiaBienBao = yNghiaBienBao;
+    }
+
+    public ImageView getImgBienBao() {
+        return imgBienBao;
+    }
+
+    public void setImgBienBao(ImageView imgBienBao) {
+        this.imgBienBao = imgBienBao;
     }
 }

@@ -36,17 +36,18 @@ public class Model {
         return listCauHoi;
     }
 
-    public ArrayList<BienBaoModels> getBienBao() {
-        OpenConnect();
-        ArrayList<BienBaoModels> listBienBao = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM BienBao", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getBlob(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
-            listBienBao.add(bienBaoModels);
-            cursor.moveToNext();
-        }
-        CloseConnect();
-        return listBienBao;
-    }
+//    public ArrayList<BienBaoModels> getBienBao() {
+//        OpenConnect();
+//        ArrayList<BienBaoModels> listBienBao = new ArrayList<>();
+//        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM BienBao", null);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+////            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getBlob(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+//            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+//            listBienBao.add(bienBaoModels);
+//            cursor.moveToNext();
+//        }
+//        CloseConnect();
+//        return listBienBao;
+//    }
 }
