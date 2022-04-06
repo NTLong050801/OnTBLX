@@ -3,17 +3,17 @@ package com.example.onblx;
 import android.widget.ImageView;
 
 public class BienBaoModels {
-//    private byte[] imgBienbao;
+
     public String maBienBao, tenBienBao, yNghiaBienBao;
-    public ImageView imgBienBao;
+    private byte[] imgBienbao;
     public BienBaoModels() {
     }
 
-    public BienBaoModels(String maBienBao, String tenBienBao, String yNghiaBienBao, ImageView imgBienBao) {
+    public BienBaoModels(String maBienBao, String tenBienBao, String yNghiaBienBao, byte[] imgBienbao) {
         this.maBienBao = maBienBao;
         this.tenBienBao = tenBienBao;
         this.yNghiaBienBao = yNghiaBienBao;
-        this.imgBienBao = imgBienBao;
+        this.imgBienbao = imgBienbao;
     }
 
     public String getMaBienBao() {
@@ -40,11 +40,11 @@ public class BienBaoModels {
         this.yNghiaBienBao = yNghiaBienBao;
     }
 
-    public ImageView getImgBienBao() {
-        return imgBienBao;
+    public byte[] getImgBienbao() {
+        return imgBienbao;
     }
 
-    public void setImgBienBao(ImageView imgBienBao) {
-        this.imgBienBao = imgBienBao;
+    public void setImgBienbao(byte[] imgBienbao) {
+        this.imgBienbao = imgBienbao;
     }
 }

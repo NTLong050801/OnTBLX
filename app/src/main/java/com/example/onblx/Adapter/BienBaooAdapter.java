@@ -1,6 +1,8 @@
 package com.example.onblx.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +58,8 @@ public class BienBaooAdapter extends BaseAdapter {
         tenBienBao = (TextView) convertView.findViewById(R.id.tenBienBao);
         yNghiaBienBao = (TextView) convertView.findViewById(R.id.yNghiaBienBao);
 
-        imgBienBao.setImageResource(R.drawable.biencam);
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(arrayBienBao.get(position).imgBienBao, 0,arrayBienBao.get(position).imgBienBao.length );
+//        imgBienBao.setImageBitmap(bitmap);
         maBienBao.setText(arrayBienBao.get(position).maBienBao);
         tenBienBao.setText(arrayBienBao.get(position).tenBienBao);
         yNghiaBienBao.setText(arrayBienBao.get(position).yNghiaBienBao);
