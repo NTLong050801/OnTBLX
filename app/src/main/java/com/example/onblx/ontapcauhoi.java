@@ -1,12 +1,17 @@
 package com.example.onblx;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+
+import adapter.GrCauHoiAdapter;
 
 public class ontapcauhoi extends AppCompatActivity {
     ListView listCauhoi;
@@ -19,6 +24,18 @@ public class ontapcauhoi extends AppCompatActivity {
         Anhxa();
         grCauHoiAdapter = new GrCauHoiAdapter(this,R.layout.itemcauhoi,cauHoiArrayList);
         listCauhoi.setAdapter(grCauHoiAdapter);
+        listCauhoi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                GroupCauHoi groupCauHoi = cauHoiArrayList.get(i);
+               String title = groupCauHoi.getTitle().toString();
+                Intent x = new Intent(ontapcauhoi.this, ItemCauHoi.class);
+                x.putExtra("title",title+"");
+                x.putExtra("pos",i);
+                startActivity(x);
+             //   Toast.makeText(ontapcauhoi.this, ""+i, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void Anhxa() {

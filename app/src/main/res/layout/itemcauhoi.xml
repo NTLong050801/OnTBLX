@@ -23,6 +23,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="6dp"
         android:layout_weight="1"
+        android:paddingTop="10dp"
         android:text="Toàn bộ 200 câu hỏi"
         android:textSize="16sp" />
 

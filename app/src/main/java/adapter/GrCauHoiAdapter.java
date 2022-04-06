@@ -1,4 +1,4 @@
-package com.example.onblx;
+package adapter;
 
 import android.content.Context;
 import android.text.Layout;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.onblx.GroupCauHoi;
+import com.example.onblx.R;
 
 import java.util.List;
 

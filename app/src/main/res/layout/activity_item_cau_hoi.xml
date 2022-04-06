@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ItemCauHoi">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_titlecauhoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+    <TextView
+        android:id="@+id/item_cau_hoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đây là câu hỏi"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/bienbao"
+        android:layout_width="259dp"
+        android:layout_height="135dp"
+
+        android:layout_gravity="center"
+        android:src="@drawable/biencam" />
+
+    <ListView
+        android:id="@+id/lvdapan"
+        android:layout_width="match_parent"
+        android:layout_height="309dp">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/tvDapAnDung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        android:textColor="#E40D0D"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_marginLeft="300dp"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đáp án" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/imgbtnBack"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_media_previous" />
+
+        <ImageButton
+            android:id="@+id/imgbtnNext"
+           android:layout_marginLeft="300dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_media_next" />
+
+
+    </LinearLayout>
+</LinearLayout>

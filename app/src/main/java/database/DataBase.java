@@ -1,4 +1,4 @@
-package com.example.onblx;
+package database;
 
 import android.content.Context;
 import android.database.Cursor;
