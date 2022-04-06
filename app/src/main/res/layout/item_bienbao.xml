@@ -3,10 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerVertical="true"
-        android:src="@drawable/biencam"
-        ></ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <ImageView
+            android:id="@+id/anhBienBao"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/biencam"></ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/maBienBao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã biển bán"
+                android:textSize="24dp"
+                android:textColor="#0238FB"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tenBienBao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên biển báo"
+                android:textSize="22dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/yNghiaBienBao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ý nghĩa biển báo"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:layout_marginTop="5dp"
+                ></TextView>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
