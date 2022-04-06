@@ -23,7 +23,17 @@
         <entry key="..\:/Android/OnBLX/app/src/main/res/layout/itemcauhoi.xml" value="0.25416666666666665" />
         <entry key="..\:/Android/OnBLX/app/src/main/res/layout/ontapcauhoi.xml" value="0.25416666666666665" />
         <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/drawable/ic_failed.xml" value="0.1" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/drawable/linetexts.xml" value="0.2115" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/drawable/textlines.xml" value="0.2115" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_bien_bao_giao_thong.xml" value="0.18" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_lam_bai.xml" value="0.18" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_list_cau_hoi.xml" value="0.25" />
         <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_test.xml" value="0.22" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/bien_bao.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/content_scrolling.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/item_bienbao.xml" value="0.17192982456140352" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/test.xml" value="0.17074275362318841" />
       </map>
     </option>
   </component>
