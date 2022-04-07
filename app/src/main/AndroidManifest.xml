@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnBLX">
         <activity
+            android:name=".chiTietBienBao"
+            android:exported="false" />
+        <activity
             android:name=".bienBao"
             android:exported="false" />
         <activity

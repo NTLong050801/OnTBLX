@@ -2,22 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_centerVertical="true"
+        android:id="@+id/lnlBienBao"
         >
         <ImageView
             android:id="@+id/anhBienBao"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/biencam"></ImageView>
+            android:src="@drawable/biencam"
+            android:layout_gravity="center"
+            ></ImageView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginLeft="10dp"
             >
             <TextView
                 android:id="@+id/maBienBao"

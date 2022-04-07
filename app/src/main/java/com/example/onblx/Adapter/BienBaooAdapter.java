@@ -58,8 +58,8 @@ public class BienBaooAdapter extends BaseAdapter {
         tenBienBao = (TextView) convertView.findViewById(R.id.tenBienBao);
         yNghiaBienBao = (TextView) convertView.findViewById(R.id.yNghiaBienBao);
 
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(arrayBienBao.get(position).imgBienBao, 0,arrayBienBao.get(position).imgBienBao.length );
-//        imgBienBao.setImageBitmap(bitmap);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(arrayBienBao.get(position).getImgBienbao(), 0,arrayBienBao.get(position).getImgBienbao().length );
+        imgBienBao.setImageBitmap(bitmap);
         maBienBao.setText(arrayBienBao.get(position).maBienBao);
         tenBienBao.setText(arrayBienBao.get(position).tenBienBao);
         yNghiaBienBao.setText(arrayBienBao.get(position).yNghiaBienBao);

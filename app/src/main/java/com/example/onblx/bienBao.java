@@ -1,11 +1,14 @@
 package com.example.onblx;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,20 +24,14 @@ public class bienBao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bien_bao);
-        AnhXa();
 
+        AnhXa();
         Model model = new Model(this);
 
         for(int i = 0 ; i<= 2; i++){
             BienBaoModels dsbienbao = model.getBienBao().get(i);
-            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), null));
-
+            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), dsbienbao.getImgBienbao()));
         }
-//        BienBaoModels dsbienbao = model.getBienBao().get(0);
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(dsbienbao.getImgBienBao(), 0, dsbienbao.getImgBienBao().length);
-//       mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), null));
-//        mangbienbao.add(new BienBaoModels("99", "bIỂN BÁO GÌ ĐÓ", "ý NGHĨA BIỂN BÁO", null));
-//        mangbienbao.add(new BienBaoModels("98", "BIỂN BÁO GÌ ĐÓ", "ý NGHĨA BIỂN BÁO", null));
 
         BienBaooAdapter bbAdapter = new BienBaooAdapter(
                 bienBao.this,
@@ -43,6 +40,14 @@ public class bienBao extends AppCompatActivity {
         );
 
         lvBienBao.setAdapter(bbAdapter);
+
+//        lvBienBao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(bienBao.this, chiTietBienBao.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void AnhXa(){
