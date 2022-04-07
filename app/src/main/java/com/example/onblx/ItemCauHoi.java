@@ -53,7 +53,7 @@ public class ItemCauHoi extends AppCompatActivity {
         }else {
             imgbtnBack.setVisibility(View.VISIBLE);
         }
-        DataBase dataBase = new DataBase(this,"OnThiBLX.sqlite",null,1);
+        DataBase dataBase = new DataBase(this);
         String sql = "SELECT * from Cauhoi where MaLoaiCauhoi = "+pos+" limit "+i+",1";
         Cursor cursor = dataBase.GetData(sql);
         while (cursor.moveToNext()) {

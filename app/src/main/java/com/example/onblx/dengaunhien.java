@@ -1,9 +1,5 @@
 package com.example.onblx;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,88 +8,94 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 import adapter.DapAnAdapter;
 import database.DataBase;
 
-public class lamdethi extends AppCompatActivity {
+public class dengaunhien extends AppCompatActivity {
     private static int save = -1;
     TextView titleDeThi,tvDaLam,CauhoiDethi,checkdapan,tvTimeout;
-    Boolean counterIsactive = false;
+    Boolean counterIsactive1 = false;
     ImageView hinhCauHoi;
     Button btnend,btnCau1,btnCau2,btnCau3,btnCau4,btnCau5,btnCau6,btnCau7,btnCau8,btnCau9,btnCau10;
     ListView lvDapAnDeThi,lvCausai;
     ImageButton imgnext,imgback;
-    CountDownTimer countDownTimer;
-    private int pos = 0,CauDaLam;
-    private  int[] listCauhoiDe,listCausai;
+    CountDownTimer countDownTimer1;
+    private int pos = 0,CauDaLam = 0;
+    private  int[] listRandom;
+    private ArrayList<Integer> listCauhoiDe;
     private  int[] luuDapAn = new int[] {2,2,2,2,2,2,2,2,2,2};
     private  int[] sttDapAn = new int[] {-2,-2,-2,-2,-2,-2,-2,-2,-2,-2};
-    private  DataBase dataBase = new DataBase(this);
+    private DataBase dataBase = new DataBase(this);
     ArrayList<CauHoi> listCauhoi = new ArrayList<>();
     ArrayList<DapAn> dapAnArrayList = new ArrayList<>();
     DapAnAdapter dapAnAdapter;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamdethi);
         anhxa();
+
         Intent intent = getIntent();
-        int sode = intent.getIntExtra("sode",0);
-        titleDeThi.setText("Đề số:"+sode);
-        if(sode == 1){
-             listCauhoiDe = new int[] {1,3,5,6,7,16,19,22,26,27};
+//        int sode = intent.getIntExtra("sode",0);
+        titleDeThi.setText("Đề Random");
+        listCauhoiDe = new ArrayList<>();
+        listRandom = new int[10];
+        for(int i = 1;i<=35;i++){
+            listCauhoiDe.add(i);
         }
-        if(sode == 2){
-             listCauhoiDe = new int[] {4,5,8,10,1,18,19,20,28,30};
-        }
-        if(sode == 3){
-           listCauhoiDe = new int[]  {9,2,11,12,13,19,22,23,24,27,28};
-        }
+        //1,2,4,5,6,7
+        Random random = new Random();
+        for(int i = 0; i<10; i++){
 
+            int number = random.nextInt(31)+1;
+            listRandom[i] = number;
+            for(int a = 0 ; a< listCauhoiDe.size();a++){
+                if(number == listCauhoiDe.get(a)){
+                    listCauhoiDe.remove(a);
+                }
+            }
+
+        }
 //        Toast.makeText(this, ""+listCauhoiDe[1], Toast.LENGTH_SHORT).show();
-        for (int i = 0 ; i<listCauhoiDe.length;i++){
-            String sql = "SELECT * from CauHoi where MaCauHoi = "+listCauhoiDe[i]+"";
-           Cursor cursor =  dataBase.GetData(sql);
-           while (cursor.moveToNext()){
-               Integer MaCauHoi = cursor.getInt(0);
-               Integer MaLoaiCauHoi = cursor.getInt(2);
-               String NoiDung = cursor.getString(1);
-               byte[] HinhAnh = cursor.getBlob(3);
-                //Bitmap bitmap = BitmapFactory.decodeByteArray(cauhois.getHinhanh(), 0, cauhois.getHinhanh().length);
-               //img_hinhAnh.setImageBitmap(bitmap);
-               CauHoi cauHoi = new CauHoi(MaCauHoi,MaLoaiCauHoi,NoiDung,HinhAnh);
-               listCauhoi.add(cauHoi);
+        for (int i = 0 ; i<listRandom.length;i++){
+            String sql = "SELECT * from CauHoi where MaCauHoi = "+listRandom[i]+"";
+            Cursor cursor =  dataBase.GetData(sql);
+            while (cursor.moveToNext()){
+                Integer MaCauHoi = cursor.getInt(0);
+                Integer MaLoaiCauHoi = cursor.getInt(2);
+                String NoiDung = cursor.getString(1);
+                byte[] HinhAnh = cursor.getBlob(3);
+                CauHoi cauHoi = new CauHoi(MaCauHoi,MaLoaiCauHoi,NoiDung,HinhAnh);
+                listCauhoi.add(cauHoi);
 
-           }
+            }
         }
 
-        if(counterIsactive){
+        if(counterIsactive1){
 
         }else {
-            counterIsactive = true;
-            countDownTimer = new CountDownTimer(30000,1000) {
+            counterIsactive1 = true;
+            countDownTimer1 = new CountDownTimer(30000,1000) {
                 int sodapandung = 0;
                 @Override
                 public void onTick(long l) {
                     updateTimer((int) l/1000);
                 }
-
                 @Override
                 public void onFinish() {
                     for(int a = 0 ; a< luuDapAn.length;a++){
@@ -101,20 +103,11 @@ public class lamdethi extends AppCompatActivity {
                             sodapandung++;
                         }
                     }
-                    AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
+                    AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(dengaunhien.this);
                     thongbaodiem.setTitle("Hết giờ !!!");
                     thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
                     thongbaodiem.setIcon(R.drawable.ic_checked);
-                    thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            intent.putExtra("socaudung",sodapandung);
-                            setResult(11,intent);
-                            finish();
-
-                        }
-                    });
-                    thongbaodiem.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
+                    thongbaodiem.setNegativeButton("Làm đề khác", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             finish();
@@ -133,9 +126,9 @@ public class lamdethi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    imgback.setVisibility(View.VISIBLE);
-                    pos = pos+1;
-                    setDapAnAdapter();
+                imgback.setVisibility(View.VISIBLE);
+                pos = pos+1;
+                setDapAnAdapter();
                 if(pos == listCauhoi.size()-1){
                     imgnext.setVisibility(View.INVISIBLE);
                 }
@@ -154,7 +147,6 @@ public class lamdethi extends AppCompatActivity {
                     imgback.setVisibility(View.INVISIBLE);
                 }
                 chondapan();
-
             }
         });
         //click kết thúc
@@ -162,7 +154,7 @@ public class lamdethi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Hiển thị dialog xác nhận nộp bài
-                AlertDialog.Builder dialog = new AlertDialog.Builder(lamdethi.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(dengaunhien.this);
                 dialog.setTitle("Thông báo");
                 dialog.setMessage("Bạn chắc chắn nộp bài ?");
                 dialog.setIcon(R.drawable.img);
@@ -171,27 +163,19 @@ public class lamdethi extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        counterIsactive = false;
-                        countDownTimer.cancel();
+                        counterIsactive1 = false;
+                        countDownTimer1.cancel();
                         for(int a = 0 ; a< luuDapAn.length;a++){
                             if(luuDapAn[a] == 1){
                                 sodapandung++;
                             }
                         }
-                        AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
+                        AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(dengaunhien.this);
                         thongbaodiem.setTitle("Nộp bài thành công");
                         thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
                         thongbaodiem.setIcon(R.drawable.ic_checked);
-                        thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                intent.putExtra("socaudung",sodapandung);
-                                setResult(11,intent);
-                                finish();
 
-                            }
-                        });
-                        thongbaodiem.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
+                        thongbaodiem.setNegativeButton("Làm đề random khác", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 finish();
@@ -204,7 +188,6 @@ public class lamdethi extends AppCompatActivity {
                 dialog.setNegativeButton("Tiếp tục làm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 dialog.show();
@@ -337,7 +320,7 @@ public class lamdethi extends AppCompatActivity {
     private  void setDapAnAdapter(){
         ArrayList<DapAn> dapAnArrayList1 = new ArrayList<>();
         CauHoi cauHoi_get = listCauhoi.get(pos);
-        //img_hinhAnh.setImageBitmap(bitmap);
+
         byte[] imgCauhoi = cauHoi_get.getHinhBienBao();
         if(imgCauhoi != null){
             Bitmap bitmap = BitmapFactory.decodeByteArray(imgCauhoi, 0, imgCauhoi.length);
@@ -357,7 +340,7 @@ public class lamdethi extends AppCompatActivity {
             DapAn dapAn = new DapAn(MaDapAn,MaCauhoi,NoiDungDapAn,DapAnDung);
             dapAnArrayList1.add(dapAn);
         }
-        dapAnAdapter = new DapAnAdapter(lamdethi.this,R.layout.item_dapan,dapAnArrayList1);
+        dapAnAdapter = new DapAnAdapter(dengaunhien.this,R.layout.item_dapan,dapAnArrayList1);
         lvDapAnDeThi.setAdapter(dapAnAdapter);
 //        lvDapAnDeThi.
 
@@ -379,7 +362,6 @@ public class lamdethi extends AppCompatActivity {
                 luuDapAn[pos]= Integer.parseInt(checkdapan);
                 sttDapAn[pos] = i;
                 tvDaLam.setText(CauDaLam+"");
-               // Toast.makeText(lamdethi.this, ""+ sttDapAn[pos], Toast.LENGTH_SHORT).show();
 
                 switch (pos){
                     case 0:{

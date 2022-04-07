@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".ontapcauhoi" />
         <activity android:name=".ItemCauHoi" />
+        <activity android:name=".dengaunhien"/>
+
     </application>
 
 </manifest>
