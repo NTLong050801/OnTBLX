@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -30,55 +31,40 @@ public class bienBao extends AppCompatActivity {
 
         AnhXa();
 
-        Model model = new Model(this);
+
         btnCam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sql = "SELECT * FROM BienBao where LoaiBienBao ='Biển báo cấm'";
-                BienBaooAdapter bbAdapter = new BienBaooAdapter(
-                        bienBao.this,
-                        R.layout.item_bienbao,
-                        model.getBienBaoCam(sql)
-
-                );
-                lvBienBao.setAdapter(bbAdapter);
+               hienThiBienBao();
             }
         });
         btnHieuLenh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sql = "SELECT * FROM BienBao where LoaiBienBao ='Biển hiệu lệnh'";
-                BienBaooAdapter bbAdapter = new BienBaooAdapter(
-                        bienBao.this,
-                        R.layout.item_bienbao,
-                        model.getBienBaoCam(sql)
+                hienThiBienBao();
+            }
+        });
+        lvBienBao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                );
-                lvBienBao.setAdapter(bbAdapter);
+                Toast.makeText(bienBao.this, "Vị trí click " +i, Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
-//        for(int i = 0 ; i<= 5; i++){
-//            BienBaoModels dsbienbao = model.getBienBaoCam(sql).get(i);
-//            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), dsbienbao.getImgBienbao()));
-//        }
-
-//
-
-//
-
-
-//        lvBienBao.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(bienBao.this, chiTietBienBao.class);
-//                startActivity(intent);
-//            }
-//        });
     }
+    private void hienThiBienBao(){
+        Model model = new Model(this);
+        BienBaooAdapter bbAdapter = new BienBaooAdapter(
+                bienBao.this,
+                R.layout.item_bienbao,
+                model.getBienBaoCam(sql)
 
+        );
+        lvBienBao.setAdapter(bbAdapter);
+    }
     private void AnhXa(){
         lvBienBao = (ListView) findViewById(R.id.lvBienBao);
         mangbienbao = new ArrayList<BienBaoModels>();
