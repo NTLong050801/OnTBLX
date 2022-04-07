@@ -12,27 +12,52 @@
         android:layout_height="match_parent"
         android:backgroundTint="#fff"
         android:orientation="vertical"
+
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
             <Button
+                android:layout_marginLeft="20dp"
                 android:id="@+id/btnBienBaoCam"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:text="Biển báo cấm"
                 />
             <Button
                 android:id="@+id/btnBienBaoHl"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:text="Biển hiệu lệnh"
                 android:layout_marginLeft="20dp"
                 />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+            >
+            <Button
+                android:id="@+id/btnBienBaoNguyHiem"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Biển nguy hiểm"
+                android:layout_marginLeft="20dp"
+                />
+            <Button
+                android:id="@+id/btnBienBaoChiDan"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Biển chỉ dẫn"
+                android:layout_marginLeft="20dp"
+                />
+        </LinearLayout>
         <ListView
             android:id="@+id/lvBienBao"
             android:layout_width="match_parent"

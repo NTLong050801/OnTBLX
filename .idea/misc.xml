@@ -30,7 +30,13 @@
         <entry key="..\:/Android/OnBLX/app/src/main/res/layout/xemcausai.xml" value="0.25416666666666665" />
         <entry key="..\:/Android/OnBLX/app/src/main/res/menu/menu_bien_bao.xml" value="0.264" />
         <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/drawable/ic_failed.xml" value="0.1" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_chi_tiet_bien_bao.xml" value="0.1" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_lamdethi.xml" value="0.16032608695652173" />
         <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/bien_bao.xml" value="0.33" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/item_bienbao.xml" value="0.16259057971014493" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/item_dapan.xml" value="0.16032608695652173" />
+        <entry key="..\:/ProjectAndroid/OnTBLX/app/src/main/res/layout/ontapcauhoi.xml" value="0.25" />
       </map>
     </option>
   </component>
