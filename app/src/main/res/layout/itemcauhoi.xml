@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tvtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Toàn bộ câu hỏi trong đề thi"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvnoidung"
+        android:layout_width="412dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/tvtitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:paddingTop="10dp"
+        android:text="Toàn bộ 200 câu hỏi"
+        android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBarCauHoi"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvnoidung"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:id="@+id/tvCauHoidalam"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvnoidung"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="95dp"
+        android:layout_toRightOf="@id/progressBarCauHoi"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#03A9F4"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvTongcauhoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="65dp"
+        android:text="20"
+        android:textColor="#03A9F4"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="87dp"
+        android:text="/"
+        android:textColor="#03A9F4"
+        android:textSize="18sp" />
+
+</RelativeLayout>

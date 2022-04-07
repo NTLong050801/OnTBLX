@@ -1,30 +1,51 @@
 package com.example.onblx;
 
+import java.sql.Blob;
+
 public class CauHoi {
-   private String tencauhoi;
-   private byte[] hinhanh;
+    private int MaCauHoi,MaLoaiCauHoi;
+    private String NoiDung;
+    private byte[] HinhBienBao;
 
-    public CauHoi() {
+    public CauHoi(int anInt, String string, int cursorInt, byte[] blob) {
     }
 
-    public CauHoi(String tencauhoi, byte[] hinhanh) {
-        this.tencauhoi = tencauhoi;
-        this.hinhanh = hinhanh;
+    public CauHoi(int maCauHoi, int maLoaiCauHoi, String noiDung, byte[] hinhBienBao) {
+        MaCauHoi = maCauHoi;
+        MaLoaiCauHoi = maLoaiCauHoi;
+        NoiDung = noiDung;
+        HinhBienBao = hinhBienBao;
     }
 
-    public String getTencauhoi() {
-        return tencauhoi;
+    public int getMaCauHoi() {
+        return MaCauHoi;
     }
 
-    public void setTencauhoi(String tencauhoi) {
-        this.tencauhoi = tencauhoi;
+    public void setMaCauHoi(int maCauHoi) {
+        MaCauHoi = maCauHoi;
     }
 
-    public byte[] getHinhanh() {
-        return hinhanh;
+    public int getMaLoaiCauHoi() {
+        return MaLoaiCauHoi;
     }
 
-    public void setHinhanh(byte[] hinhanh) {
-        this.hinhanh = hinhanh;
+    public void setMaLoaiCauHoi(int maLoaiCauHoi) {
+        MaLoaiCauHoi = maLoaiCauHoi;
+    }
+
+    public String getNoiDung() {
+        return NoiDung;
+    }
+
+    public void setNoiDung(String noiDung) {
+        NoiDung = noiDung;
+    }
+
+    public byte[] getHinhBienBao() {
+        return HinhBienBao;
+    }
+
+    public void setHinhBienBao(byte[] hinhBienBao) {
+        HinhBienBao = hinhBienBao;
     }
 }
