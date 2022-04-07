@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,27 +20,55 @@ import java.util.ArrayList;
 
 public class bienBao extends AppCompatActivity {
     ListView lvBienBao;
+    Button btnCam,btnHieuLenh;
     ArrayList<BienBaoModels> mangbienbao;
+    private  String sql;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bien_bao);
 
         AnhXa();
+
         Model model = new Model(this);
+        btnCam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sql = "SELECT * FROM BienBao where LoaiBienBao ='Biển báo cấm'";
+                BienBaooAdapter bbAdapter = new BienBaooAdapter(
+                        bienBao.this,
+                        R.layout.item_bienbao,
+                        model.getBienBaoCam(sql)
 
-        for(int i = 0 ; i<= 2; i++){
-            BienBaoModels dsbienbao = model.getBienBao().get(i);
-            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), dsbienbao.getImgBienbao()));
-        }
+                );
+                lvBienBao.setAdapter(bbAdapter);
+            }
+        });
+        btnHieuLenh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sql = "SELECT * FROM BienBao where LoaiBienBao ='Biển hiệu lệnh'";
+                BienBaooAdapter bbAdapter = new BienBaooAdapter(
+                        bienBao.this,
+                        R.layout.item_bienbao,
+                        model.getBienBaoCam(sql)
 
-        BienBaooAdapter bbAdapter = new BienBaooAdapter(
-                bienBao.this,
-                R.layout.item_bienbao,
-                mangbienbao
-        );
+                );
+                lvBienBao.setAdapter(bbAdapter);
+            }
+        });
 
-        lvBienBao.setAdapter(bbAdapter);
+
+
+//        for(int i = 0 ; i<= 5; i++){
+//            BienBaoModels dsbienbao = model.getBienBaoCam(sql).get(i);
+//            mangbienbao.add(new BienBaoModels(dsbienbao.getMaBienBao(), dsbienbao.getTenBienBao(), dsbienbao.getyNghiaBienBao(), dsbienbao.getImgBienbao()));
+//        }
+
+//
+
+//
+
 
 //        lvBienBao.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -53,5 +82,7 @@ public class bienBao extends AppCompatActivity {
     private void AnhXa(){
         lvBienBao = (ListView) findViewById(R.id.lvBienBao);
         mangbienbao = new ArrayList<BienBaoModels>();
+        btnCam = findViewById(R.id.btnBienBaoCam);
+        btnHieuLenh = findViewById(R.id.btnBienBaoHl);
     }
 }

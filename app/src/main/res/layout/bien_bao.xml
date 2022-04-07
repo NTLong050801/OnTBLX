@@ -13,22 +13,36 @@
         android:backgroundTint="#fff"
         android:orientation="vertical"
         >
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="Biển báo cấm"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:background="#ccc"
-            android:padding="16dp"
-            ></TextView>
+
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnBienBaoCam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Biển báo cấm"
+                />
+            <Button
+                android:id="@+id/btnBienBaoHl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Biển hiệu lệnh"
+                android:layout_marginLeft="20dp"
+                />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/lvBienBao"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             ></ListView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
     </LinearLayout>
 </LinearLayout>

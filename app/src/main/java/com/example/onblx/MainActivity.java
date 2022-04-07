@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import database.DataBase;
 
 public class MainActivity extends AppCompatActivity {
     ListView lvCauhoi;
-    LinearLayout OntapCauhoi,Dengaunhien,Thitheobode;
+    LinearLayout OntapCauhoi,Dengaunhien,Thitheobode,bienBaoGiaoThong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +48,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(x);
             }
         });
+        bienBaoGiaoThong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, bienBao.class);
+                startActivity(intent);
+                //Toast.makeText(MainActivity.this, "ok1321", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void Anhxa() {
         OntapCauhoi = (LinearLayout) findViewById(R.id.layout4);
         Dengaunhien = (LinearLayout) findViewById(R.id.layout11);
         Thitheobode = (LinearLayout) findViewById(R.id.layout2);
+        bienBaoGiaoThong = (LinearLayout) findViewById(R.id.layout5);
+
 
     }
 }
