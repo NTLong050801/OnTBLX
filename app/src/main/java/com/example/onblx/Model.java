@@ -39,11 +39,12 @@ public class Model {
     public ArrayList<BienBaoModels> getBienBao() {
         OpenConnect();
         ArrayList<BienBaoModels> listBienBao = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM BienBao", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM BienBao"
+                , null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
 
-            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3));
+            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(4));
             listBienBao.add(bienBaoModels);
             cursor.moveToNext();
         }

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
-    public static final String DB_OnThiBLX = "db_blx";
+    public static final String DB_OnThiBLX = "OnThiBLX2.sqlite";
     public static final int DB_VERSION = 1;
 
     public DataBase(@Nullable Context context) {
