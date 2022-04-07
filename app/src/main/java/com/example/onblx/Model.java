@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import database.DataBase;
-
 public class Model {
     DataBase database;
     SQLiteDatabase sqLiteDatabase;
@@ -27,10 +25,10 @@ public class Model {
     public ArrayList<CauHoi> getData() {
         OpenConnect();
         ArrayList<CauHoi> listCauHoi = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM CauHoi", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM BienBao", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            CauHoi cauhoi = new CauHoi(cursor.getInt(0),cursor.getInt(1) ,cursor.getString(2),cursor.getBlob(3));
+            CauHoi cauhoi = new CauHoi(cursor.getString(1), cursor.getBlob(3));
             listCauHoi.add(cauhoi);
             cursor.moveToNext();
         }
@@ -38,5 +36,18 @@ public class Model {
         return listCauHoi;
     }
 
+    public ArrayList<BienBaoModels> getBienBao() {
+        OpenConnect();
+        ArrayList<BienBaoModels> listBienBao = new ArrayList<>();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM BienBao", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
 
+            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3));
+            listBienBao.add(bienBaoModels);
+            cursor.moveToNext();
+        }
+        CloseConnect();
+        return listBienBao;
+    }
 }
