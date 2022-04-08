@@ -44,7 +44,6 @@ public class Model {
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-
             BienBaoModels bienBaoModels = new BienBaoModels(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(4));
             listBienBao.add(bienBaoModels);
             cursor.moveToNext();
