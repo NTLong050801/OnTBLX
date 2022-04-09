@@ -49,7 +49,6 @@ public class bienBao extends AppCompatActivity {
         lvBienBao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Toast.makeText(bienBao.this, "Vị trí click " +i, Toast.LENGTH_SHORT).show();
             }
         });

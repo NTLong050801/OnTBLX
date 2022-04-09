@@ -24,13 +24,14 @@ import database.DataBase;
 
 public class ItemCauHoi extends AppCompatActivity {
     private static int save = -1,stt,i_get;
-    private  static  String title;
+    private  static  String title , sql;
     ListView lvDapAn;
     ImageView bienbao;
     ImageButton imgbtnBack,imgbtnNext;
     TextView tvCauhoi , tvDapAn,tvDapanDung;
     Toolbar tbtitle;
     Button btnCheck;
+
     ArrayList<CauHoi> listCauHoi = new ArrayList<>();
     ArrayList<DapAn> dapAnArrayList = new ArrayList<>();
     DapAnAdapter dapAnAdapter;
@@ -47,6 +48,7 @@ public class ItemCauHoi extends AppCompatActivity {
         i_get=i;
         if(pos == 1){
             bienbao.setVisibility(View.GONE);
+            sql = "SELECT * from Cauhoi where MaLoaiCauhoi = "+pos;
         }
         if(i==0){
             imgbtnBack.setVisibility(View.INVISIBLE);
@@ -54,13 +56,7 @@ public class ItemCauHoi extends AppCompatActivity {
             imgbtnBack.setVisibility(View.VISIBLE);
         }
         DataBase dataBase = new DataBase(this);
-        String sql = "SELECT * from Cauhoi where MaLoaiCauhoi = "+pos+" limit "+i+",1";
-        Cursor cursor = dataBase.GetData(sql);
-        while (cursor.moveToNext()) {
-            CauHoi cauhoi = new CauHoi(cursor.getInt(0), cursor.getString(1), cursor.getInt(2),cursor.getBlob(3));
-            listCauHoi.add(cauhoi);
-            tvCauhoi.setText(cursor.getString(1));
-        }
+
 
         Cursor cursor_da = dataBase.GetData("SELECT * From DapAn where MaCauHoi="+(i+1)+"");
         while (cursor_da.moveToNext()){
@@ -104,30 +100,6 @@ public class ItemCauHoi extends AppCompatActivity {
        });
 
 
-//        imgbtnNext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                i_get++;
-//                Intent x = new Intent(ItemCauHoi.this, ItemCauHoi.class);
-//                x.putExtra("i",i_get);
-//                x.putExtra("pos",pos);
-//                x.putExtra("title",title);
-//                startActivity(x);
-//
-//            }
-//        });
-//        imgbtnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                i_get--;
-//                Intent x = new Intent(ItemCauHoi.this, ItemCauHoi.class);
-//                x.putExtra("i",i_get);
-//                x.putExtra("pos",pos);
-//                x.putExtra("title",title);
-//                startActivity(x);
-//
-//            }
-//        });
     }
 
     private void anhxa() {

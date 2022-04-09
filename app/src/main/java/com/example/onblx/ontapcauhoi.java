@@ -33,7 +33,7 @@ public class ontapcauhoi extends AppCompatActivity {
                 x.putExtra("title",title+"");
                 x.putExtra("pos",i);
                 startActivity(x);
-             //   Toast.makeText(ontapcauhoi.this, ""+i, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -43,7 +43,7 @@ public class ontapcauhoi extends AppCompatActivity {
         cauHoiArrayList = new ArrayList<>();
         cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi trong đề thi","Toàn bộ 25 câu hỏi","25","0"));
         cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi lý thuyết","Toàn bộ 15 câu lý thuyết","15","0"));
-        cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi biển báo","Toàn bộ 5 câu hỏi biển báo","5","0"));
+        cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi biển báo","Toàn bộ 10 câu hỏi biển báo","5","0"));
         cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi sa hình","Toàn bộ 5 câu hỏi sa hình","5","0"));
 
     }
