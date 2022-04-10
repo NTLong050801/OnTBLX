@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,31 +11,61 @@
         android:id="@+id/tb_titlecauhoi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="3dp"
         android:background="#2196F3"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:id="@+id/sttCauHoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:text="TextView"
+            android:textColor="#FFEB3B"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/item_cau_hoi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đây là câu hỏi"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"
+
+
+        android:layout_below="@+id/tb_titlecauhoi"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
         android:padding="5dp"
-        android:gravity="center"/>
+        android:text="Đây là câu hỏi"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/bienbao"
         android:layout_width="259dp"
         android:layout_height="135dp"
 
+        android:layout_below="@+id/item_cau_hoi"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/biencam" />
 
     <ListView
         android:id="@+id/lvdapan"
         android:layout_width="match_parent"
-        android:layout_height="309dp">
+        android:layout_height="276dp"
+        android:layout_below="@+id/bienbao"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="21dp">
 
     </ListView>
 
@@ -43,37 +73,64 @@
         android:id="@+id/tvDapAnDung"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        android:textColor="#E40D0D"
+        android:layout_below="@+id/lvdapan"
+
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="17dp"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="#E40D0D"
+        android:textSize="20sp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btnCheck"
-        android:layout_marginLeft="300dp"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đáp án" />
+        android:layout_height="36dp"
+        android:layout_below="@+id/tvDapAnDung"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="24dp"
+        android:text="Đáp án"
+        android:visibility="invisible" />
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/form1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp">
+
         <ImageButton
             android:id="@+id/imgbtnBack"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@android:drawable/ic_media_previous" />
 
         <ImageButton
             android:id="@+id/imgbtnNext"
-           android:layout_marginLeft="300dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
             app:srcCompat="@android:drawable/ic_media_next" />
 
 
-    </LinearLayout>
-</LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
