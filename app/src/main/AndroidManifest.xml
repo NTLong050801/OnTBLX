@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnBLX">
+        <activity android:name=".chiTietBienBao"></activity>
         <activity
             android:name=".lamdethi"
             android:exported="false" />

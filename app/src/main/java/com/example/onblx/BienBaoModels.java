@@ -7,6 +7,8 @@ public class BienBaoModels {
     public String maBienBao, tenBienBao, yNghiaBienBao;
     private byte[] imgBienbao;
 
+    public BienBaoModels() {
+    }
 
     public BienBaoModels(String maBienBao, String tenBienBao, String yNghiaBienBao, byte[] imgBienbao) {
         this.maBienBao = maBienBao;
