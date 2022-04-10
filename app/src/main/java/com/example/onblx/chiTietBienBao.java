@@ -28,7 +28,7 @@ public class chiTietBienBao extends AppCompatActivity {
         Intent intent = getIntent();
         String maBB = (String) intent.getStringExtra("maBienBao");
         Model model = new Model(chiTietBienBao.this);
-        String sql = "SELECT * FROM BienBao where MaBienBao = " + maBB;
+        String sql = "SELECT * FROM BienBao where MaBienBao = " + maBB+"";
         mangbienbaoo = new ArrayList<BienBaoModels>();
         mangbienbaoo = model.getBienBaoCam(sql);
 //        tenBienBao = mangbienbaoo.get(0).getTenBienBao();
