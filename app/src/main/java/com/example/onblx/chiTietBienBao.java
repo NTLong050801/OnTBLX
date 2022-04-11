@@ -29,13 +29,13 @@ public class chiTietBienBao extends AppCompatActivity {
         String maBB = (String) intent.getStringExtra("maBienBao");
         Model model = new Model(chiTietBienBao.this);
         String sql = "SELECT * FROM BienBao where MaBienBao = '" + maBB + "'";
-        mangbienbaoo = new ArrayList<BienBaoModels>();
-        mangbienbaoo = model.getBienBaoCam(sql);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(mangbienbaoo.get(0).getImgBienbao(), 0,mangbienbaoo.get(0).getImgBienbao().length);
+        mangbienbaoo = new ArrayList<>();
+        mangbienbaoo = model.getChiTietBienBao(sql);
         tenBienBao = mangbienbaoo.get(0).getTenBienBao();
         yNghiaBB = mangbienbaoo.get(0).getyNghiaBienBao();
-        tvMaTenBienBao.setText("Biển " + maBB + " " );
-        tvYNghiaBienBao.setText("Biển này cấm rồi nhé" );
+        Bitmap bitmap = BitmapFactory.decodeByteArray(mangbienbaoo.get(0).getImgBienbao(), 0,mangbienbaoo.get(0).getImgBienbao().length);
+        tvMaTenBienBao.setText("Biển " + maBB + " " + tenBienBao);
+        tvYNghiaBienBao.setText("" + yNghiaBB);
         imgBienBao.setImageBitmap(bitmap);
     }
 

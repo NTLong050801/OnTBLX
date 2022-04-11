@@ -51,4 +51,18 @@ public class Model {
         CloseConnect();
         return listBienBao;
     }
+
+    public ArrayList<BienBaoModels> getChiTietBienBao(String sql) {
+        OpenConnect();
+        ArrayList<BienBaoModels> listBienBao = new ArrayList<>();
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            BienBaoModels bienBaoModels = new BienBaoModels(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getBlob(4));
+            listBienBao.add(bienBaoModels);
+            cursor.moveToNext();
+        }
+        CloseConnect();
+        return listBienBao;
+    }
 }
