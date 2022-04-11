@@ -24,15 +24,16 @@ public class chiTietBienBao extends AppCompatActivity {
         setContentView(R.layout.activity_chi_tiet_bien_bao);
         AnhXa();
 
-        Bitmap bitmap = BitmapFactory.decodeByteArray(mangbienbaoo.get(0).getImgBienbao(), 0,mangbienbaoo.get(0).getImgBienbao().length);
+
         Intent intent = getIntent();
         String maBB = (String) intent.getStringExtra("maBienBao");
         Model model = new Model(chiTietBienBao.this);
-        String sql = "SELECT * FROM BienBao where MaBienBao = " + maBB;
+        String sql = "SELECT * FROM BienBao where MaBienBao = '" + maBB + "'";
         mangbienbaoo = new ArrayList<BienBaoModels>();
         mangbienbaoo = model.getBienBaoCam(sql);
-//        tenBienBao = mangbienbaoo.get(0).getTenBienBao();
-//        yNghiaBB = mangbienbaoo.get(0).getyNghiaBienBao();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(mangbienbaoo.get(0).getImgBienbao(), 0,mangbienbaoo.get(0).getImgBienbao().length);
+        tenBienBao = mangbienbaoo.get(0).getTenBienBao();
+        yNghiaBB = mangbienbaoo.get(0).getyNghiaBienBao();
         tvMaTenBienBao.setText("Biển " + maBB + " " );
         tvYNghiaBienBao.setText("Biển này cấm rồi nhé" );
         imgBienBao.setImageBitmap(bitmap);
