@@ -104,16 +104,7 @@ public class ItemCauHoi extends AppCompatActivity {
            }
        });
     }
-//    private void change_background(AdapterView<?> DapAnAdapter){
-//        btnCheck.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                tvDapanDung.setText("Đán án "+ stt_da_dung +" là đáp án đúng");
-//                tvDapanDung.setVisibility(View.VISIBLE);
-//                DapAnAdapter.getChildAt(stt_da_dung-1).setBackgroundColor(Color.GREEN);
-//            }
-//        });
-//    }
+
     private  void setCauHoi(){
         listCauHoi = model.get_cauHoi(sql);
         //Toast.makeText(this, ""+listCauHoi.size(), Toast.LENGTH_SHORT).show();

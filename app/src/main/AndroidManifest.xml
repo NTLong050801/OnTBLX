@@ -29,6 +29,8 @@
         <activity android:name=".ItemCauHoi" />
         <activity android:name=".dengaunhien"/>
         <activity android:name=".bienBao"/>
+        <activity android:name=".xemcausai"/>
+        <activity android:name=".item_xemcausai"/>
 
     </application>
 

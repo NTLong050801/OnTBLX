@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.onblx.Adapter.BienBaooAdapter;
-
 import java.util.ArrayList;
 
 public class chiTietBienBao extends AppCompatActivity {

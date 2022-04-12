@@ -39,6 +39,7 @@ public class lamdethi extends AppCompatActivity {
     ListView lvDapAnDeThi,lvCausai;
     ImageButton imgnext,imgback;
     CountDownTimer countDownTimer;
+    Model model;
     private int pos = 0,CauDaLam;
     private  int[] listCauhoiDe,listCausai;
     private  int[] luuDapAn = new int[] {2,2,2,2,2,2,2,2,2,2};
@@ -54,6 +55,7 @@ public class lamdethi extends AppCompatActivity {
         setContentView(R.layout.activity_lamdethi);
         anhxa();
         Intent intent = getIntent();
+        model = new Model(this);
         int sode = intent.getIntExtra("sode",0);
         titleDeThi.setText("Đề số:"+sode);
         if(sode == 1){
@@ -99,6 +101,8 @@ public class lamdethi extends AppCompatActivity {
                     for(int a = 0 ; a< luuDapAn.length;a++){
                         if(luuDapAn[a] == 1){
                             sodapandung++;
+                        }else{
+                            model.Insert_cauSai(listCauhoiDe[a]);
                         }
                     }
                     AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
@@ -176,6 +180,8 @@ public class lamdethi extends AppCompatActivity {
                         for(int a = 0 ; a< luuDapAn.length;a++){
                             if(luuDapAn[a] == 1){
                                 sodapandung++;
+                            } else{
+                                model.Insert_cauSai(listCauhoiDe[a]);
                             }
                         }
                         AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);

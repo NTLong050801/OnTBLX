@@ -32,7 +32,7 @@ public class dengaunhien extends AppCompatActivity {
     Boolean counterIsactive1 = false;
     ImageView hinhCauHoi;
     Button btnend,btnCau1,btnCau2,btnCau3,btnCau4,btnCau5,btnCau6,btnCau7,btnCau8,btnCau9,btnCau10;
-    ListView lvDapAnDeThi,lvCausai;
+    ListView lvDapAnDeThi;
     ImageButton imgnext,imgback;
     CountDownTimer countDownTimer1;
     private int pos = 0,CauDaLam = 0;
@@ -44,12 +44,13 @@ public class dengaunhien extends AppCompatActivity {
     ArrayList<CauHoi> listCauhoi = new ArrayList<>();
     ArrayList<DapAn> dapAnArrayList = new ArrayList<>();
     DapAnAdapter dapAnAdapter;
+    Model model;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamdethi);
         anhxa();
-
+        model = new Model(this);
         Intent intent = getIntent();
 //        int sode = intent.getIntExtra("sode",0);
         titleDeThi.setText("Đề Random");
@@ -60,20 +61,37 @@ public class dengaunhien extends AppCompatActivity {
         }
         //1,2,4,5,6,7
         Random random = new Random();
+        ArrayList<Integer> listRandom = new ArrayList<>();
+        // random 10 số trong 1 -35 không trùng nhau
+        // list = [];
+
+
+//       while (listRandom.size() == 10){
+//
+//       }
+
         for(int i = 0; i<10; i++){
 
             int number = random.nextInt(31)+1;
-            listRandom[i] = number;
-            for(int a = 0 ; a< listCauhoiDe.size();a++){
-                if(number == listCauhoiDe.get(a)){
-                    listCauhoiDe.remove(a);
-                }
-            }
+            listRandom.add(number);
+
 
         }
+//        while (listRandom.length == 10){
+//            int dem = 1;
+//            int number1 = random.nextInt(31)+1;
+//            for(int i = 0 ; i<10;i++){
+//                if(number1 == listRandom[i]){
+//                    dem
+//                }
+//            }
+//        }
+
+
+
 //        Toast.makeText(this, ""+listCauhoiDe[1], Toast.LENGTH_SHORT).show();
-        for (int i = 0 ; i<listRandom.length;i++){
-            String sql = "SELECT * from CauHoi where MaCauHoi = "+listRandom[i]+"";
+        for (int i = 0 ; i<listRandom.size();i++){
+            String sql = "SELECT * from CauHoi where MaCauHoi = "+listRandom.get(i)+"";
             Cursor cursor =  dataBase.GetData(sql);
             while (cursor.moveToNext()){
                 Integer MaCauHoi = cursor.getInt(0);
@@ -101,6 +119,9 @@ public class dengaunhien extends AppCompatActivity {
                     for(int a = 0 ; a< luuDapAn.length;a++){
                         if(luuDapAn[a] == 1){
                             sodapandung++;
+                        }
+                        if(luuDapAn[a] != 1){
+                            model.Insert_cauSai(listRandom.get(a));
                         }
                     }
                     AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(dengaunhien.this);
@@ -168,6 +189,9 @@ public class dengaunhien extends AppCompatActivity {
                         for(int a = 0 ; a< luuDapAn.length;a++){
                             if(luuDapAn[a] == 1){
                                 sodapandung++;
+                            }
+                            else{
+                                model.Insert_cauSai(listRandom.get(a));
                             }
                         }
                         AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(dengaunhien.this);
@@ -421,7 +445,7 @@ public class dengaunhien extends AppCompatActivity {
         checkdapan = findViewById(R.id.checkDapan);
         tvDaLam = findViewById(R.id.dalam);
         hinhCauHoi = findViewById(R.id.HinhCauHoi);
-        lvCausai = findViewById(R.id.lvCauSai);
+
         btnCau1 = findViewById(R.id.btnCau1);
         btnCau2 = findViewById(R.id.btnCau2);
         btnCau3 = findViewById(R.id.btnCau3);

@@ -26,6 +26,8 @@ public class chondethi extends AppCompatActivity {
         de1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent intent = new Intent(chondethi.this,lamdethi.class);
                 intent.putExtra("sode",1);
                 startActivityForResult(intent, code1);

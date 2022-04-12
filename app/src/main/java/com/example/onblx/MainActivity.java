@@ -13,7 +13,7 @@ import database.DataBase;
 
 public class MainActivity extends AppCompatActivity {
     ListView lvCauhoi;
-    LinearLayout OntapCauhoi,Dengaunhien,Thitheobode,bienBaoGiaoThong;
+    LinearLayout OntapCauhoi,Dengaunhien,Thitheobode,bienBaoGiaoThong,CacCauSai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "ok1321", Toast.LENGTH_SHORT).show();
             }
         });
+        CacCauSai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, xemcausai.class);
+                startActivity(intent);            }
+        });
     }
 
     private void Anhxa() {
@@ -63,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Dengaunhien = (LinearLayout) findViewById(R.id.layout11);
         Thitheobode = (LinearLayout) findViewById(R.id.layout2);
         bienBaoGiaoThong = (LinearLayout) findViewById(R.id.layout5);
+        CacCauSai = findViewById(R.id.layout3);
 
 
     }

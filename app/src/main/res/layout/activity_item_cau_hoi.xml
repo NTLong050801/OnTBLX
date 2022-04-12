@@ -17,17 +17,10 @@
         android:layout_marginTop="3dp"
         android:background="#2196F3"
         android:minHeight="?attr/actionBarSize"
+        android:scrollbarSize="15dp"
         android:theme="?attr/actionBarTheme">
 
-        <TextView
-            android:id="@+id/sttCauHoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="290dp"
-            android:text="TextView"
-            android:textColor="#FFEB3B"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
@@ -38,8 +31,8 @@
 
         android:layout_below="@+id/tb_titlecauhoi"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:padding="5dp"
         android:text="Đây là câu hỏi"
@@ -61,10 +54,10 @@
     <ListView
         android:id="@+id/lvdapan"
         android:layout_width="match_parent"
-        android:layout_height="276dp"
+        android:layout_height="240dp"
         android:layout_below="@+id/bienbao"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="-1dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="21dp">
 
     </ListView>
@@ -72,13 +65,14 @@
     <TextView
         android:id="@+id/tvDapAnDung"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lvdapan"
+        android:layout_height="47dp"
 
+        android:layout_above="@+id/btnCheck"
         android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="17dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="22dp"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#E40D0D"
@@ -88,13 +82,14 @@
     <Button
         android:id="@+id/btnCheck"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_below="@+id/tvDapAnDung"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/form1"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="300dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="24dp"
-        android:text="Đáp án"
+
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Check"
         android:visibility="invisible" />
 
     <RelativeLayout
@@ -117,6 +112,21 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             app:srcCompat="@android:drawable/ic_media_previous" />
+
+        <TextView
+            android:id="@+id/sttCauHoi"
+            android:layout_width="81dp"
+            android:layout_height="45dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="79dp"
+            android:layout_marginBottom="14dp"
+            android:layout_toEndOf="@+id/imgbtnBack"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#F44336"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/imgbtnNext"
