@@ -1,5 +1,6 @@
 package com.example.onblx;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,13 +41,15 @@ public class lamdethi extends AppCompatActivity {
     ImageButton imgnext,imgback;
     CountDownTimer countDownTimer;
     Model model;
-    private int pos = 0,CauDaLam;
+    private  boolean checkDiemLiet = true;
+    private int pos = 0,CauDaLam , stt_dung ;
     private  int[] listCauhoiDe,listCausai;
     private  int[] luuDapAn = new int[] {2,2,2,2,2,2,2,2,2,2};
     private  int[] sttDapAn = new int[] {-2,-2,-2,-2,-2,-2,-2,-2,-2,-2};
     private  DataBase dataBase = new DataBase(this);
     ArrayList<CauHoi> listCauhoi = new ArrayList<>();
     ArrayList<DapAn> dapAnArrayList = new ArrayList<>();
+    ArrayList<Integer> listCauLiet = new ArrayList<>();
     DapAnAdapter dapAnAdapter;
 
     @Override
@@ -59,7 +62,7 @@ public class lamdethi extends AppCompatActivity {
         int sode = intent.getIntExtra("sode",0);
         titleDeThi.setText("Đề số:"+sode);
         if(sode == 1){
-             listCauhoiDe = new int[] {1,3,5,6,7,16,19,22,26,27};
+             listCauhoiDe = new int[] {1,3,5,8,7,16,19,22,26,27};
         }
         if(sode == 2){
              listCauhoiDe = new int[] {4,5,8,10,1,18,19,20,28,30};
@@ -77,8 +80,6 @@ public class lamdethi extends AppCompatActivity {
                Integer MaLoaiCauHoi = cursor.getInt(2);
                String NoiDung = cursor.getString(1);
                byte[] HinhAnh = cursor.getBlob(3);
-                //Bitmap bitmap = BitmapFactory.decodeByteArray(cauhois.getHinhanh(), 0, cauhois.getHinhanh().length);
-               //img_hinhAnh.setImageBitmap(bitmap);
                CauHoi cauHoi = new CauHoi(MaCauHoi,MaLoaiCauHoi,NoiDung,HinhAnh);
                listCauhoi.add(cauHoi);
 
@@ -89,7 +90,7 @@ public class lamdethi extends AppCompatActivity {
 
         }else {
             counterIsactive = true;
-            countDownTimer = new CountDownTimer(30000,1000) {
+            countDownTimer = new CountDownTimer(180000,1000) {
                 int sodapandung = 0;
                 @Override
                 public void onTick(long l) {
@@ -99,33 +100,51 @@ public class lamdethi extends AppCompatActivity {
                 @Override
                 public void onFinish() {
                     for(int a = 0 ; a< luuDapAn.length;a++){
+
                         if(luuDapAn[a] == 1){
+
                             sodapandung++;
+                            setBackgr(a,Color.GREEN);
                         }else{
+                            setBackgr(a,Color.RED);
+                            if(listCauhoiDe[a] == 9 || listCauhoiDe[a] == 12 || listCauhoiDe[a] == 13 ||listCauhoiDe[a] == 14 ||listCauhoiDe[a] == 15 ){
+                                checkDiemLiet = false;
+                                listCauLiet.add(a);
+                            }
                             model.Insert_cauSai(listCauhoiDe[a]);
                         }
                     }
-                    AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
-                    thongbaodiem.setTitle("Hết giờ !!!");
-                    thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
-                    thongbaodiem.setIcon(R.drawable.ic_checked);
-                    thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            intent.putExtra("socaudung",sodapandung);
-                            setResult(11,intent);
-                            finish();
+                    if(checkDiemLiet){
+                        AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
+                        thongbaodiem.setTitle("Hết giờ !!!");
+                        thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
+                        thongbaodiem.setIcon(R.drawable.ic_checked);
+                        thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                intent.putExtra("socaudung",sodapandung);
+                                setResult(11,intent);
+                                finish();
 
-                        }
-                    });
-                    thongbaodiem.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                            startActivity(getIntent());
-                        }
-                    });
-                    thongbaodiem.show();
+                            }
+                        });
+                        thongbaodiem.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                                startActivity(getIntent());
+                            }
+                        });
+                        thongbaodiem.show();
+
+                    }else {
+                        DiaLogLiet(listCauLiet);
+                    }
+                    btnend.setText("Đã Nộp");
+                    btnend.setEnabled(false);
+                    btnend.setBackgroundColor(Color.GREEN);
+
+
                 }
             }.start();
         }
@@ -176,36 +195,52 @@ public class lamdethi extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         counterIsactive = false;
+                        checkDiemLiet = true;
                         countDownTimer.cancel();
                         for(int a = 0 ; a< luuDapAn.length;a++){
                             if(luuDapAn[a] == 1){
                                 sodapandung++;
+                                setBackgr(a,Color.GREEN);
                             } else{
+                                setBackgr(a,Color.RED);
+                                if(listCauhoiDe[a] == 9 || listCauhoiDe[a] == 12 || listCauhoiDe[a] == 13 ||listCauhoiDe[a] == 14 ||listCauhoiDe[a] == 15 ){
+                                    checkDiemLiet = false;
+                                    listCauLiet.add(a);
+                                }
                                 model.Insert_cauSai(listCauhoiDe[a]);
                             }
                         }
-                        AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
-                        thongbaodiem.setTitle("Nộp bài thành công");
-                        thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
-                        thongbaodiem.setIcon(R.drawable.ic_checked);
-                        thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                intent.putExtra("socaudung",sodapandung);
-                                setResult(11,intent);
-                                finish();
+                        if(checkDiemLiet){
+                            AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
+                            thongbaodiem.setTitle("Nộp bài thành công");
+                            thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
+                            thongbaodiem.setIcon(R.drawable.ic_checked);
+                            thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    intent.putExtra("socaudung",sodapandung);
+                                    setResult(11,intent);
+                                    finish();
 
-                            }
-                        });
-                        thongbaodiem.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
-                                startActivity(getIntent());
-                            }
-                        });
-                        thongbaodiem.show();
+                                }
+                            });
+                            thongbaodiem.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                    startActivity(getIntent());
+                                }
+                            });
+                            thongbaodiem.show();
+
+                        }else {
+                            DiaLogLiet(listCauLiet);
+                        }
+                        btnend.setText("Đã Nộp");
+                        btnend.setEnabled(false);
+                        btnend.setBackgroundColor(Color.GREEN);
                     }
+
                 });
                 dialog.setNegativeButton("Tiếp tục làm", new DialogInterface.OnClickListener() {
                     @Override
@@ -363,10 +398,51 @@ public class lamdethi extends AppCompatActivity {
             DapAn dapAn = new DapAn(MaDapAn,MaCauhoi,NoiDungDapAn,DapAnDung);
             dapAnArrayList1.add(dapAn);
         }
-        dapAnAdapter = new DapAnAdapter(lamdethi.this,R.layout.item_dapan,dapAnArrayList1);
+        dapAnAdapter = new DapAnAdapter(lamdethi.this,R.layout.item_dapan,dapAnArrayList1){
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+                View view1 = super.getView(i, view, viewGroup);
+                int dem = -1;
+                for (DapAn dapAn_dung : dapAnArrayList1) {
+                    dem++;
+                    if (dapAn_dung.getDapAnDung() == 1) {
+                        stt_dung = dem;
+                    }
+                }
+                if(i == sttDapAn[pos]){
+                        view1.setBackgroundColor(Color.GRAY);
+                }else if(btnend.getText() == "Đã Nộp") {
+                    if(i == (stt_dung)){
+                        view1.setBackgroundColor(Color.GREEN);
+                    }
+                }
+                return view1;
+            }
+        };
         lvDapAnDeThi.setAdapter(dapAnAdapter);
-//        lvDapAnDeThi.
 
+
+    }
+    private void DiaLogLiet(ArrayList<Integer> sttCauLiet){
+
+        AlertDialog.Builder checkliet = new AlertDialog.Builder(lamdethi.this);
+        checkliet.setTitle("SAI CÂU ĐIỂM LIỆT");
+        String strDiemLiet = "";
+        for(int i =0 ; i< sttCauLiet.size();i++){
+
+            strDiemLiet += ""+ sttCauLiet.get(i)+",";
+        }
+        strDiemLiet = strDiemLiet.substring(0, strDiemLiet.length() - 1);
+        checkliet.setMessage("Bạn trượt ... vì câu " +strDiemLiet + " là câu liệt");
+        checkliet.setIcon(R.drawable.ic_checked);
+        checkliet.setNegativeButton("Làm lại", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        checkliet.show();
     }
     private  void chondapan(){
         lvDapAnDeThi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -374,12 +450,12 @@ public class lamdethi extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(sttDapAn[pos] == -2){
                     CauDaLam = CauDaLam+1;
-
                 }
-                adapterView.getChildAt(i).setBackgroundColor(Color.GRAY);
+
                 if (save != -1 && save != i){
                     adapterView.getChildAt(save).setBackgroundColor(Color.WHITE);
                 }
+                adapterView.getChildAt(i).setBackgroundColor(Color.GRAY);
                 save = i;
                 String checkdapan = ((TextView) view.findViewById(R.id.checkDapan)).getText().toString();
                 luuDapAn[pos]= Integer.parseInt(checkdapan);
@@ -387,53 +463,58 @@ public class lamdethi extends AppCompatActivity {
                 tvDaLam.setText(CauDaLam+"");
                // Toast.makeText(lamdethi.this, ""+ sttDapAn[pos], Toast.LENGTH_SHORT).show();
 
-                switch (pos){
-                    case 0:{
-                        btnCau1.setBackgroundColor(Color.GREEN);
 
-                        break;
-                    }
-                    case 1:{
-                        btnCau2.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 2:{
-                        btnCau3.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 3:{
-                        btnCau4.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 4:{
-                        btnCau5.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 5:{
-                        btnCau6.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 6:{
-                        btnCau7.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 7:{
-                        btnCau8.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 8:{
-                        btnCau9.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                    case 9:{
-                        btnCau10.setBackgroundColor(Color.GREEN);
-                        break;
-                    }
-                }
+                setBackgr(pos,Color.CYAN);
 
             }
 
         });
+    }
+    private void setBackgr(Integer Vitri , int color){
+
+        switch (Vitri){
+            case 0:{
+                btnCau1.setBackgroundColor(color);
+
+                break;
+            }
+            case 1:{
+                btnCau2.setBackgroundColor(color);
+                break;
+            }
+            case 2:{
+                btnCau3.setBackgroundColor(color);
+                break;
+            }
+            case 3:{
+                btnCau4.setBackgroundColor(color);
+                break;
+            }
+            case 4:{
+                btnCau5.setBackgroundColor(color);
+                break;
+            }
+            case 5:{
+                btnCau6.setBackgroundColor(color);
+                break;
+            }
+            case 6:{
+                btnCau7.setBackgroundColor(color);
+                break;
+            }
+            case 7:{
+                btnCau8.setBackgroundColor(color);
+                break;
+            }
+            case 8:{
+                btnCau9.setBackgroundColor(color);
+                break;
+            }
+            case 9:{
+                btnCau10.setBackgroundColor(color);
+                break;
+            }
+        }
     }
     private void anhxa() {
         titleDeThi = findViewById(R.id.title_dethi);

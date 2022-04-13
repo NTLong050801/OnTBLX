@@ -3,9 +3,11 @@ package com.example.onblx;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -45,9 +47,21 @@ public class xemcausai extends AppCompatActivity {
         }else {
             btnDeleteAlL.setVisibility(View.VISIBLE);
             tvCacCausai.setText("Các câu sai");
-           cauSaiAdapter = new CauSaiAdapter(this,R.layout.item_lvcausai,model.get_cauHoiSai());
+
+           cauSaiAdapter = new CauSaiAdapter(this,R.layout.item_lvcausai,model.get_cauHoiSai()){
+               @Override
+               public View getView(int i, View view, ViewGroup viewGroup) {
+
+                   View view1 = super.getView(i, view, viewGroup);
+                   int macauliet = model.get_cauHoiSai().get(i).getMaCauHoi();
+                   if( macauliet == 9 || macauliet == 12 || macauliet == 13 || macauliet == 14||macauliet == 15){
+                       view1.setBackgroundColor(Color.RED);
+                   }
+                   return  view1;
+               }
+           };
            lvCauSai.setAdapter(cauSaiAdapter);
-            //Toast.makeText(this, ""+model.get_cauHoiSai(), Toast.LENGTH_SHORT).show();
+           //Toast.makeText(this, ""+model.get_cauHoiSai(), Toast.LENGTH_SHORT).show();
 
         }
         btnDeleteAlL.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +92,7 @@ public class xemcausai extends AppCompatActivity {
                 Intent intent = new Intent(xemcausai.this,item_xemcausai.class);
                 intent.putExtra("poss",i);
                 startActivityForResult(intent, 123);
+
             }
         });
 
@@ -95,7 +110,7 @@ public class xemcausai extends AppCompatActivity {
                         CauHoi cauHoi = model.get_cauHoiSai().get(i);
                         model.delete_item(cauHoi.getMaCauHoi());
                         cauSaiAdapter = new CauSaiAdapter(xemcausai.this,R.layout.item_lvcausai,model.get_cauHoiSai());
-                        //cauSaiAdapter.notifyDataSetChanged();
+
                         lvCauSai.setAdapter(cauSaiAdapter);
                         if(model.TongCauSai() == 0){
                             tvCacCausai.setText("Chưa có câu sai nào !");
