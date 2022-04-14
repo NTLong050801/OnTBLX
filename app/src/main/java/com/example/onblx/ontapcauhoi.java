@@ -41,9 +41,9 @@ public class ontapcauhoi extends AppCompatActivity {
     private void Anhxa() {
         listCauhoi = (ListView) findViewById(R.id.lvCauHoi);
         cauHoiArrayList = new ArrayList<>();
-        cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi trong đề thi","Toàn bộ 30 câu hỏi","25","0"));
+        cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi trong đề thi","Toàn bộ 30 câu hỏi","30","0"));
         cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi lý thuyết","Toàn bộ 15 câu lý thuyết","15","0"));
-        cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi biển báo","Toàn bộ 10 câu hỏi biển báo","5","0"));
+        cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi biển báo","Toàn bộ 10 câu hỏi biển báo","10","0"));
         cauHoiArrayList.add(new GroupCauHoi("Toàn bộ câu hỏi sa hình","Toàn bộ 5 câu hỏi sa hình","5","0"));
 
     }

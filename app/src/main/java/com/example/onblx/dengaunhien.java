@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -28,7 +29,6 @@ import adapter.DapAnAdapter;
 import database.DataBase;
 
 public class dengaunhien extends AppCompatActivity {
-    private static int save = -1;
     TextView titleDeThi,tvDaLam,CauhoiDethi,checkdapan,tvTimeout;
     Boolean counterIsactive1 = false;
     ImageView hinhCauHoi;
@@ -44,7 +44,7 @@ public class dengaunhien extends AppCompatActivity {
     private  int[] sttDapAn = new int[] {-2,-2,-2,-2,-2,-2,-2,-2,-2,-2};
     private DataBase dataBase = new DataBase(this);
     ArrayList<CauHoi> listCauhoi = new ArrayList<>();
-    ArrayList<DapAn> dapAnArrayList = new ArrayList<>();
+    ArrayList<DapAn> dapAnArrayList ;
     ArrayList<Integer> listCauLiet = new ArrayList<>();
     DapAnAdapter dapAnAdapter;
     Model model;
@@ -54,23 +54,17 @@ public class dengaunhien extends AppCompatActivity {
         setContentView(R.layout.activity_lamdethi);
         anhxa();
         model = new Model(this);
-        Intent intent = getIntent();
-//        int sode = intent.getIntExtra("sode",0);
         titleDeThi.setText("Đề Random");
         listCauhoiDe = new ArrayList<>();
         listRandom = new int[10];
-        for(int i = 1;i<=35;i++){
-            listCauhoiDe.add(i);
-        }
-        //1,2,4,5,6,7
+
         Random random = new Random();
         ArrayList<Integer> listRandom = new ArrayList<>();
         for(int i = 0; i<10; i++){
-            int number = random.nextInt(31)+1;
+            int number = random.nextInt(30)+1;
             listRandom.add(number);
         }
-//        btnend.setText("Nộp");
-//        Toast.makeText(this, ""+listCauhoiDe[1], Toast.LENGTH_SHORT).show();
+
         for (int i = 0 ; i<listRandom.size();i++){
             String sql = "SELECT * from CauHoi where MaCauHoi = "+listRandom.get(i)+"";
             Cursor cursor =  dataBase.GetData(sql);
@@ -214,8 +208,6 @@ public class dengaunhien extends AppCompatActivity {
                         btnend.setText("Đã Nộp");
                         btnend.setEnabled(false);
                         btnend.setBackgroundColor(Color.GREEN);
-
-
                     }
                 });
                 dialog.setNegativeButton("Tiếp tục làm", new DialogInterface.OnClickListener() {
@@ -351,7 +343,7 @@ public class dengaunhien extends AppCompatActivity {
     }
 
     private  void setDapAnAdapter(){
-        ArrayList<DapAn> dapAnArrayList1 = new ArrayList<>();
+        dapAnArrayList = new ArrayList<>();
         CauHoi cauHoi_get = listCauhoi.get(pos);
 
         byte[] imgCauhoi = cauHoi_get.getHinhBienBao();
@@ -371,14 +363,14 @@ public class dengaunhien extends AppCompatActivity {
             String NoiDungDapAn = cursor_dapan.getString(2);
             Integer DapAnDung = cursor_dapan.getInt(3);
             DapAn dapAn = new DapAn(MaDapAn,MaCauhoi,NoiDungDapAn,DapAnDung);
-            dapAnArrayList1.add(dapAn);
+            dapAnArrayList.add(dapAn);
         }
-        dapAnAdapter = new DapAnAdapter(dengaunhien.this,R.layout.item_dapan,dapAnArrayList1){
+        dapAnAdapter = new DapAnAdapter(dengaunhien.this,R.layout.item_dapan,dapAnArrayList){
             @Override
             public View getView(int i, View view, ViewGroup viewGroup) {
                 View view1 = super.getView(i, view, viewGroup);
                 int dem = -1;
-                for (DapAn dapAn_dung : dapAnArrayList1) {
+                for (DapAn dapAn_dung : dapAnArrayList) {
                     dem++;
                     if (dapAn_dung.getDapAnDung() == 1) {
                         stt_dung = dem;
@@ -395,7 +387,7 @@ public class dengaunhien extends AppCompatActivity {
             }
         };
         lvDapAnDeThi.setAdapter(dapAnAdapter);
-//        lvDapAnDeThi.
+
 
     }
     private void DiaLogLiet(ArrayList<Integer> sttCauLiet){
@@ -404,8 +396,7 @@ public class dengaunhien extends AppCompatActivity {
         checkliet.setTitle("SAI CÂU ĐIỂM LIỆT");
         String strDiemLiet = "";
         for(int i =0 ; i< sttCauLiet.size();i++){
-
-            strDiemLiet += ""+ sttCauLiet.get(i)+",";
+            strDiemLiet += ""+ (sttCauLiet.get(i))+",";
         }
         strDiemLiet = strDiemLiet.substring(0, strDiemLiet.length() - 1);
         checkliet.setMessage("Bạn trượt ... vì câu " +strDiemLiet + " là câu liệt");
@@ -420,23 +411,27 @@ public class dengaunhien extends AppCompatActivity {
         checkliet.show();
     }
     private  void chondapan(){
+
         lvDapAnDeThi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(sttDapAn[pos] == -2){
                     CauDaLam = CauDaLam+1;
+                }
 
+                for (int j = 0 ; j< dapAnAdapter.getCount();j++){
+                    if(i == j){
+                        adapterView.getChildAt(i).setBackgroundColor(Color.GRAY);
+                    }else {
+                        adapterView.getChildAt(j).setBackgroundColor(Color.WHITE);
+                    }
                 }
-                adapterView.getChildAt(i).setBackgroundColor(Color.GRAY);
-                if (save != -1 && save != i){
-                    adapterView.getChildAt(save).setBackgroundColor(Color.WHITE);
-                }
-                save = i;
                 String checkdapan = ((TextView) view.findViewById(R.id.checkDapan)).getText().toString();
                 luuDapAn[pos]= Integer.parseInt(checkdapan);
                 sttDapAn[pos] = i;
                 tvDaLam.setText(CauDaLam+"");
                 setBackgr(pos,Color.CYAN);
+               // Toast.makeText(dengaunhien.this, ""+dapAnAdapter.getCount(), Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -497,7 +492,6 @@ public class dengaunhien extends AppCompatActivity {
         checkdapan = findViewById(R.id.checkDapan);
         tvDaLam = findViewById(R.id.dalam);
         hinhCauHoi = findViewById(R.id.HinhCauHoi);
-
         btnCau1 = findViewById(R.id.btnCau1);
         btnCau2 = findViewById(R.id.btnCau2);
         btnCau3 = findViewById(R.id.btnCau3);

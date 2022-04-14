@@ -47,20 +47,7 @@ public class xemcausai extends AppCompatActivity {
         }else {
             btnDeleteAlL.setVisibility(View.VISIBLE);
             tvCacCausai.setText("Các câu sai");
-
-           cauSaiAdapter = new CauSaiAdapter(this,R.layout.item_lvcausai,model.get_cauHoiSai()){
-               @Override
-               public View getView(int i, View view, ViewGroup viewGroup) {
-
-                   View view1 = super.getView(i, view, viewGroup);
-                   int macauliet = model.get_cauHoiSai().get(i).getMaCauHoi();
-                   if( macauliet == 9 || macauliet == 12 || macauliet == 13 || macauliet == 14||macauliet == 15){
-                       view1.setBackgroundColor(Color.RED);
-                   }
-                   return  view1;
-               }
-           };
-           lvCauSai.setAdapter(cauSaiAdapter);
+            setCauSaiAdapter();
            //Toast.makeText(this, ""+model.get_cauHoiSai(), Toast.LENGTH_SHORT).show();
 
         }
@@ -75,8 +62,7 @@ public class xemcausai extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         model.delete_all();
-                        cauSaiAdapter = new CauSaiAdapter(xemcausai.this,R.layout.item_lvcausai,model.get_cauHoiSai());
-                        lvCauSai.setAdapter(cauSaiAdapter);
+                        setCauSaiAdapter();
                         tvCacCausai.setText("Chưa có câu sai nào !");
                         btnDeleteAlL.setVisibility(View.GONE);
                         Toast.makeText(xemcausai.this, "Xóa thành công!", Toast.LENGTH_SHORT).show();
@@ -109,9 +95,7 @@ public class xemcausai extends AppCompatActivity {
 
                         CauHoi cauHoi = model.get_cauHoiSai().get(i);
                         model.delete_item(cauHoi.getMaCauHoi());
-                        cauSaiAdapter = new CauSaiAdapter(xemcausai.this,R.layout.item_lvcausai,model.get_cauHoiSai());
-
-                        lvCauSai.setAdapter(cauSaiAdapter);
+                        setCauSaiAdapter();
                         if(model.TongCauSai() == 0){
                             tvCacCausai.setText("Chưa có câu sai nào !");
                             btnDeleteAlL.setVisibility(View.GONE);
@@ -133,13 +117,27 @@ public class xemcausai extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 123 & resultCode == 11){
-            cauSaiAdapter = new CauSaiAdapter(this,R.layout.item_lvcausai,model.get_cauHoiSai());
-            lvCauSai.setAdapter(cauSaiAdapter);
+            setCauSaiAdapter();
             if(model.TongCauSai() == 0){
                 tvCacCausai.setText("Chưa có câu sai nào !");
                 btnDeleteAlL.setVisibility(View.GONE);
             }
         }
+    }
+    private void setCauSaiAdapter(){
+        cauSaiAdapter = new CauSaiAdapter(this,R.layout.item_lvcausai,model.get_cauHoiSai()){
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                View view1 = super.getView(i, view, viewGroup);
+                int macauliet = model.get_cauHoiSai().get(i).getMaCauHoi();
+                if( macauliet == 9 || macauliet == 12 || macauliet == 13 || macauliet == 14||macauliet == 15){
+                    view1.setBackgroundColor(Color.RED);
+                }
+                return  view1;
+            }
+        };
+        lvCauSai.setAdapter(cauSaiAdapter);
     }
 
     private void anhxa() {

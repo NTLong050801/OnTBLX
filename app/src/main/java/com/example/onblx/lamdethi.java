@@ -48,7 +48,7 @@ public class lamdethi extends AppCompatActivity {
     private  int[] sttDapAn = new int[] {-2,-2,-2,-2,-2,-2,-2,-2,-2,-2};
     private  DataBase dataBase = new DataBase(this);
     ArrayList<CauHoi> listCauhoi = new ArrayList<>();
-    ArrayList<DapAn> dapAnArrayList = new ArrayList<>();
+    ArrayList<DapAn> dapAnArrayList ;
     ArrayList<Integer> listCauLiet = new ArrayList<>();
     DapAnAdapter dapAnAdapter;
 
@@ -109,7 +109,7 @@ public class lamdethi extends AppCompatActivity {
                             setBackgr(a,Color.RED);
                             if(listCauhoiDe[a] == 9 || listCauhoiDe[a] == 12 || listCauhoiDe[a] == 13 ||listCauhoiDe[a] == 14 ||listCauhoiDe[a] == 15 ){
                                 checkDiemLiet = false;
-                                listCauLiet.add(a);
+                                listCauLiet.add(a+1);
                             }
                             model.Insert_cauSai(listCauhoiDe[a]);
                         }
@@ -205,7 +205,7 @@ public class lamdethi extends AppCompatActivity {
                                 setBackgr(a,Color.RED);
                                 if(listCauhoiDe[a] == 9 || listCauhoiDe[a] == 12 || listCauhoiDe[a] == 13 ||listCauhoiDe[a] == 14 ||listCauhoiDe[a] == 15 ){
                                     checkDiemLiet = false;
-                                    listCauLiet.add(a);
+                                    listCauLiet.add(a+1);
                                 }
                                 model.Insert_cauSai(listCauhoiDe[a]);
                             }
@@ -376,7 +376,7 @@ public class lamdethi extends AppCompatActivity {
     }
 
     private  void setDapAnAdapter(){
-        ArrayList<DapAn> dapAnArrayList1 = new ArrayList<>();
+        dapAnArrayList = new ArrayList<>();
         CauHoi cauHoi_get = listCauhoi.get(pos);
         //img_hinhAnh.setImageBitmap(bitmap);
         byte[] imgCauhoi = cauHoi_get.getHinhBienBao();
@@ -396,14 +396,14 @@ public class lamdethi extends AppCompatActivity {
             String NoiDungDapAn = cursor_dapan.getString(2);
             Integer DapAnDung = cursor_dapan.getInt(3);
             DapAn dapAn = new DapAn(MaDapAn,MaCauhoi,NoiDungDapAn,DapAnDung);
-            dapAnArrayList1.add(dapAn);
+            dapAnArrayList.add(dapAn);
         }
-        dapAnAdapter = new DapAnAdapter(lamdethi.this,R.layout.item_dapan,dapAnArrayList1){
+        dapAnAdapter = new DapAnAdapter(lamdethi.this,R.layout.item_dapan,dapAnArrayList){
             @Override
             public View getView(int i, View view, ViewGroup viewGroup) {
                 View view1 = super.getView(i, view, viewGroup);
                 int dem = -1;
-                for (DapAn dapAn_dung : dapAnArrayList1) {
+                for (DapAn dapAn_dung : dapAnArrayList) {
                     dem++;
                     if (dapAn_dung.getDapAnDung() == 1) {
                         stt_dung = dem;
@@ -451,19 +451,18 @@ public class lamdethi extends AppCompatActivity {
                 if(sttDapAn[pos] == -2){
                     CauDaLam = CauDaLam+1;
                 }
-
-                if (save != -1 && save != i){
-                    adapterView.getChildAt(save).setBackgroundColor(Color.WHITE);
+                for (int j = 0 ; j < dapAnAdapter.getCount();j++){
+                    if(i == j){
+                        adapterView.getChildAt(i).setBackgroundColor(Color.GRAY);
+                    }else {
+                        adapterView.getChildAt(j).setBackgroundColor(Color.WHITE);
+                    }
                 }
-                adapterView.getChildAt(i).setBackgroundColor(Color.GRAY);
-                save = i;
                 String checkdapan = ((TextView) view.findViewById(R.id.checkDapan)).getText().toString();
                 luuDapAn[pos]= Integer.parseInt(checkdapan);
                 sttDapAn[pos] = i;
                 tvDaLam.setText(CauDaLam+"");
                // Toast.makeText(lamdethi.this, ""+ sttDapAn[pos], Toast.LENGTH_SHORT).show();
-
-
                 setBackgr(pos,Color.CYAN);
 
             }
