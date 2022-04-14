@@ -21,14 +21,6 @@ public class listCauHoi extends AppCompatActivity {
         Model model = new Model(this);
         CauHoi cauhois = model.getData().get(0);
 
-       // tv_cauhoi.setText(cauhois.getTencauhoi());
-//        rb_dapAnA.setText(cauhois.getDapan());
-//        rb_dapAnB.setText(cauhois.getDapan());
-//        rb_dapAnC.setText(cauhois.getDapan());
-//        rb_dapAnD.setText(cauhois.getDapan());
-
-       // Bitmap bitmap = BitmapFactory.decodeByteArray(cauhois.getHinhanh(), 0, cauhois.getHinhanh().length);
-        //img_hinhAnh.setImageBitmap(bitmap);
     }
 
     private void AnhXa(){

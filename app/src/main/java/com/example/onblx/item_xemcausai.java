@@ -86,8 +86,6 @@ public class item_xemcausai extends AppCompatActivity {
             public void onClick(View view) {
                 model.delete_item(cauHoi.getMaCauHoi());
                 setResult(11,intent);
-//                tvDapanDung.setVisibility(View.VISIBLE);
-//                tvDapanDung.setText(sql1);
                finish();
             }
         });

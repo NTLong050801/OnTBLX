@@ -78,12 +78,6 @@ public class chondethi extends AppCompatActivity {
             caudungde3.setVisibility(View.VISIBLE);
             caudungde3.setText(kq+"/10");
         }
-//        if(resultCode == 111){
-//            int kq = data.getIntExtra("xemcausai",0);
-//            Intent viewCauSai = new Intent(this,xemcausai.class);
-//            startActivity(viewCauSai);
-//        }
-
     }
 
     private void anhxa() {

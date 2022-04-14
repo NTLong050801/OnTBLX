@@ -81,7 +81,7 @@ public class bienBao extends AppCompatActivity {
     }
     private void AnhXa(){
         lvBienBao = (ListView) findViewById(R.id.lvBienBao);
-        mangbienbao = new ArrayList<BienBaoModels>();
+        mangbienbao = new ArrayList<>();
         btnCam = findViewById(R.id.btnBienBaoCam);
         btnHieuLenh = findViewById(R.id.btnBienBaoHl);
         btnBienBaoNguyHiem = (Button) findViewById(R.id.btnBienBaoNguyHiem);

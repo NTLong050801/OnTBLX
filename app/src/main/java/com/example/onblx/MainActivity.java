@@ -31,10 +31,6 @@ public class MainActivity extends AppCompatActivity {
         DataBase db = new DataBase(this);
 
         db.QueryData("Create table if not exists LoaiCauHoi(IDLoaiCauHoi Integer primary key autoincrement,TenLoaiCauHoi varchar)");
-
-        //thêm dữ liệu
-       // db.QueryData("INSERT INTO LoaiCauHoi Values(null,'Lý thuyết')");
-        //lấy dữ liệu
         Anhxa();
         ActionViewFlipper();
         OntapCauhoi.setOnClickListener(new View.OnClickListener() {
