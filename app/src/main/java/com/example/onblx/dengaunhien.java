@@ -57,14 +57,14 @@ public class dengaunhien extends AppCompatActivity {
         titleDeThi.setText("Đề Random");
         listCauhoiDe = new ArrayList<>();
         listRandom = new int[10];
-
         Random random = new Random();
         ArrayList<Integer> listRandom = new ArrayList<>();
+        // add 10 câu random vào ListRandom
         for(int i = 0; i<10; i++){
             int number = random.nextInt(30)+1;
             listRandom.add(number);
         }
-
+        // add 10 câu hỏi vào Arr<CauHoi> listCauhoi
         for (int i = 0 ; i<listRandom.size();i++){
             String sql = "SELECT * from CauHoi where MaCauHoi = "+listRandom.get(i)+"";
             Cursor cursor =  dataBase.GetData(sql);
@@ -79,10 +79,12 @@ public class dengaunhien extends AppCompatActivity {
             }
         }
 
+        //counterIsactive1 = false
         if(counterIsactive1){
 
         }else {
             counterIsactive1 = true;
+            // khởi tạo countDownTime = 3p
             countDownTimer1 = new CountDownTimer(180000,1000) {
                 int sodapandung = 0;
                 @Override
@@ -169,7 +171,6 @@ public class dengaunhien extends AppCompatActivity {
                 dialog.setIcon(R.drawable.img);
                 dialog.setPositiveButton("Nộp", new DialogInterface.OnClickListener() {
                     int sodapandung = 0;
-
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         counterIsactive1 = false;

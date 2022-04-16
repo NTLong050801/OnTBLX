@@ -117,7 +117,10 @@ public class lamdethi extends AppCompatActivity {
                     if(checkDiemLiet){
                         AlertDialog.Builder thongbaodiem = new AlertDialog.Builder(lamdethi.this);
                         thongbaodiem.setTitle("Hết giờ !!!");
-                        thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
+
+                            thongbaodiem.setMessage("Bạn đúng "+sodapandung +"/10");
+
+
                         thongbaodiem.setIcon(R.drawable.ic_checked);
                         thongbaodiem.setPositiveButton("Làm đề khác", new DialogInterface.OnClickListener() {
                             @Override
